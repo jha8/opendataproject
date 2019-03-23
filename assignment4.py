@@ -30,7 +30,7 @@ def main_query(database_name):
         3. Q3               4. Q4
         5. QUIT
         """)
-        #Ask user to input a number between 1-7
+        #Ask user to input a number between 1-5
         #Which further calls the respective function
         choice = input('Choose from above: ')
         if choice == '1':
@@ -49,3 +49,35 @@ def main_query(database_name):
             exit(0)
         else:
             print('Invalid Input. Try again')
+# ================================================================================
+# // Q1
+# ================================================================================
+def q1(database_name):
+    conn = sqlite3.connect(database_name)
+    c = conn.cursor()
+    conn.close()
+    main_query(database_name)
+# ================================================================================
+# // Q2
+# ================================================================================
+def q2(database_name):
+    conn = sqlite3.connect(database_name)
+    c = conn.cursor()
+    conn.close()
+    main_query(database_name)
+# ================================================================================
+# // Q3
+# ================================================================================
+def q3(database_name):
+    conn = sqlite3.connect(database_name)
+    c = conn.cursor()
+    conn.close()
+    main_query(database_name)
+# ================================================================================
+# // Q4
+# ================================================================================
+def q4(database_name):
+    conn = sqlite3.connect(database_name)
+    c = conn.cursor()
+    conn.close()
+    main_query(database_name)
