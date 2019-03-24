@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<head>    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <script>L_PREFER_CANVAS=false; L_NO_TOUCH=false; L_DISABLE_3D=false;</script>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.4.0/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.4.0/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://rawcdn.githack.com/python-visualization/folium/master/folium/templates/leaflet.awesome.rotate.css"/>
+    <style>html, body {width: 100%;height: 100%;margin: 0;padding: 0;}</style>
+    <style>#map {position:absolute;top:0;bottom:0;right:0;left:0;}</style>
+    
+    <meta name="viewport" content="width=device-width,
+        initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <style>#map_50e4095fc8bf4b3d9c440e8678c2fd5b {
+        position: relative;
+        width: 100.0%;
+        height: 100.0%;
+        left: 0.0%;
+        top: 0.0%;
+        }
+    </style>
+</head>
+<body>    
+    
+    <div class="folium-map" id="map_50e4095fc8bf4b3d9c440e8678c2fd5b" ></div>
+</body>
+<script>    
+    
+    
+        var bounds = null;
+    
+
+    var map_50e4095fc8bf4b3d9c440e8678c2fd5b = L.map(
+        'map_50e4095fc8bf4b3d9c440e8678c2fd5b', {
+        center: [53.5482294, -113.49412683333333],
+        zoom: 14,
+        maxBounds: bounds,
+        layers: [],
+        worldCopyJump: false,
+        crs: L.CRS.EPSG3857,
+        zoomControl: true,
+        });
+
+
+    
+    var tile_layer_3df8cefa5cf64c05a3d6167069af3982 = L.tileLayer(
+        'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
+        {
+        "attribution": null,
+        "detectRetina": false,
+        "maxNativeZoom": 18,
+        "maxZoom": 18,
+        "minZoom": 0,
+        "noWrap": false,
+        "opacity": 1,
+        "subdomains": "abc",
+        "tms": false
+}).addTo(map_50e4095fc8bf4b3d9c440e8678c2fd5b);
+    
+
+            var circle_ad44009482b142a9985ee3b07c187edd = L.circle(
+                [53.54189905, -113.5004229],
+                {
+  "bubblingMouseEvents": true,
+  "color": "crimson",
+  "dashArray": null,
+  "dashOffset": null,
+  "fill": true,
+  "fillColor": "crimson",
+  "fillOpacity": 0.2,
+  "fillRule": "evenodd",
+  "lineCap": "round",
+  "lineJoin": "round",
+  "opacity": 1.0,
+  "radius": 100,
+  "stroke": true,
+  "weight": 3
+}
+                )
+                .addTo(map_50e4095fc8bf4b3d9c440e8678c2fd5b);
+            
+    
+            var popup_d264c26b99504ab59cceaa9159c5b6f2 = L.popup({maxWidth: '100%'
+            
+            });
+
+            
+                var html_a8d45ed30c8d4ac99d0b42c1fabad24e = $(`<div id="html_a8d45ed30c8d4ac99d0b42c1fabad24e" style="width: 100.0%; height: 100.0%;">DOWNTOWN <br> Number of Incidents: 235 </div>`)[0];
+                popup_d264c26b99504ab59cceaa9159c5b6f2.setContent(html_a8d45ed30c8d4ac99d0b42c1fabad24e);
+            
+
+            circle_ad44009482b142a9985ee3b07c187edd.bindPopup(popup_d264c26b99504ab59cceaa9159c5b6f2)
+            ;
+
+            
+        
+    
+
+            var circle_8ae7c9dc13af483f9a2284acbb64f95f = L.circle(
+                [53.54903594, -113.478967],
+                {
+  "bubblingMouseEvents": true,
+  "color": "crimson",
+  "dashArray": null,
+  "dashOffset": null,
+  "fill": true,
+  "fillColor": "crimson",
+  "fillOpacity": 0.2,
+  "fillRule": "evenodd",
+  "lineCap": "round",
+  "lineJoin": "round",
+  "opacity": 1.0,
+  "radius": 100,
+  "stroke": true,
+  "weight": 3
+}
+                )
+                .addTo(map_50e4095fc8bf4b3d9c440e8678c2fd5b);
+            
+    
+            var popup_3975cc97ad6e4b9cb94067bef9ee9796 = L.popup({maxWidth: '100%'
+            
+            });
+
+            
+                var html_e7e87eb31ac349b6913b3b9dd606bbd4 = $(`<div id="html_e7e87eb31ac349b6913b3b9dd606bbd4" style="width: 100.0%; height: 100.0%;">BOYLE STREET <br> Number of Incidents: 224 </div>`)[0];
+                popup_3975cc97ad6e4b9cb94067bef9ee9796.setContent(html_e7e87eb31ac349b6913b3b9dd606bbd4);
+            
+
+            circle_8ae7c9dc13af483f9a2284acbb64f95f.bindPopup(popup_3975cc97ad6e4b9cb94067bef9ee9796)
+            ;
+
+            
+        
+    
+
+            var circle_fa1d990ede4c426d808c21c4bf96ea81 = L.circle(
+                [53.55375321, -113.5029906],
+                {
+  "bubblingMouseEvents": true,
+  "color": "crimson",
+  "dashArray": null,
+  "dashOffset": null,
+  "fill": true,
+  "fillColor": "crimson",
+  "fillOpacity": 0.2,
+  "fillRule": "evenodd",
+  "lineCap": "round",
+  "lineJoin": "round",
+  "opacity": 1.0,
+  "radius": 100,
+  "stroke": true,
+  "weight": 3
+}
+                )
+                .addTo(map_50e4095fc8bf4b3d9c440e8678c2fd5b);
+            
+    
+            var popup_09ba53f51e584f4ea945294c4f38b2ee = L.popup({maxWidth: '100%'
+            
+            });
+
+            
+                var html_19865ceac38a455287aa860e3ee73266 = $(`<div id="html_19865ceac38a455287aa860e3ee73266" style="width: 100.0%; height: 100.0%;">CENTRAL MCDOUGALL <br> Number of Incidents: 162 </div>`)[0];
+                popup_09ba53f51e584f4ea945294c4f38b2ee.setContent(html_19865ceac38a455287aa860e3ee73266);
+            
+
+            circle_fa1d990ede4c426d808c21c4bf96ea81.bindPopup(popup_09ba53f51e584f4ea945294c4f38b2ee)
+            ;
+
+            
+        
+</script>
