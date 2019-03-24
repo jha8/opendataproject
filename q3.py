@@ -30,8 +30,8 @@ map =folium.Map(location=[result['Latitude'].mean(),result['Longitude'].mean()],
 for row in result.head().itertuples():
     folium.Circle(
         location = [row.Latitude, row.Longitude],
-        popup = "{} <br> Number of Incidents: {} ".format(row.Neighbourhood_Name, row.total_incidents),
-        radius = 100,
+        popup = "{} <br> {} ".format(row.Neighbourhood_Name, row.total_incidents),
+        radius = (30*(row.total_incidents//50)),
         color = 'crimson',
         fill = True,
         fill_color = 'crimson'
