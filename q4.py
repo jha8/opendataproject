@@ -31,12 +31,10 @@ result2 = crimes.iloc[0:number_nbhd, 0]
 result = pd.concat([result1, result2], axis =1)
 print(result.to_string(index = False))
 
+////////////////////////////////////
 
-select neighbourhood_name, crime_type, sum(incidents_count) as total
-from crime_incidents
-where crime_type in (select crime_type from crime_incidents
-group by crime_type
-having max(incidents_count))
-and neighbourhood_name = 'ALLENDALE'
-group by neighbourhood_name, crime_type
-limit 25;
+parent = '''SELECT neighbourhood_name,crime_type, sum(incidents_count) as total_incidents  from crime_incidents
+where year between %d and %d
+group by neighbourhood_name, crime_type 
+order by neighbourhood_name asc, total_incidents desc''' % (strt_year, end_year)
+///////////////////////////////
