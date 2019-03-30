@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<head>    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <script>L_PREFER_CANVAS=false; L_NO_TOUCH=false; L_DISABLE_3D=false;</script>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.4.0/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.4.0/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://rawcdn.githack.com/python-visualization/folium/master/folium/templates/leaflet.awesome.rotate.css"/>
+    <style>html, body {width: 100%;height: 100%;margin: 0;padding: 0;}</style>
+    <style>#map {position:absolute;top:0;bottom:0;right:0;left:0;}</style>
+    
+    <meta name="viewport" content="width=device-width,
+        initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <style>#map_8d389da8cb114cba8997f0e131fa8aa2 {
+        position: relative;
+        width: 100.0%;
+        height: 100.0%;
+        left: 0.0%;
+        top: 0.0%;
+        }
+    </style>
+</head>
+<body>    
+    
+    <div class="folium-map" id="map_8d389da8cb114cba8997f0e131fa8aa2" ></div>
+</body>
+<script>    
+    
+    
+        var bounds = null;
+    
+
+    var map_8d389da8cb114cba8997f0e131fa8aa2 = L.map(
+        'map_8d389da8cb114cba8997f0e131fa8aa2', {
+        center: [53.5444, -113.323],
+        zoom: 11,
+        maxBounds: bounds,
+        layers: [],
+        worldCopyJump: false,
+        crs: L.CRS.EPSG3857,
+        zoomControl: true,
+        });
+
+
+    
+    var tile_layer_ec40b8792ed64a09b62c801ac826d3d3 = L.tileLayer(
+        'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
+        {
+        "attribution": null,
+        "detectRetina": false,
+        "maxNativeZoom": 18,
+        "maxZoom": 18,
+        "minZoom": 0,
+        "noWrap": false,
+        "opacity": 1,
+        "subdomains": "abc",
+        "tms": false
+}).addTo(map_8d389da8cb114cba8997f0e131fa8aa2);
+    
+
+            var circle_e2a4894968e445a3b2aa0cb8a9a45479 = L.circle(
+                [53.50807597, -113.4161185],
+                {
+  "bubblingMouseEvents": true,
+  "color": "green",
+  "dashArray": null,
+  "dashOffset": null,
+  "fill": true,
+  "fillColor": "darkgreen",
+  "fillOpacity": 0.2,
+  "fillRule": "evenodd",
+  "lineCap": "round",
+  "lineJoin": "round",
+  "opacity": 1.0,
+  "radius": 77.0,
+  "stroke": true,
+  "weight": 3
+}
+                )
+                .addTo(map_8d389da8cb114cba8997f0e131fa8aa2);
+            
+    
+            var popup_384b3920b6d14735a8dc662c556d9c20 = L.popup({maxWidth: '100%'
+            
+            });
+
+            
+                var html_5dd3a088f8264fd898fc23b107cf3ecb = $(`<div id="html_5dd3a088f8264fd898fc23b107cf3ecb" style="width: 100.0%; height: 100.0%;">WEIR INDUSTRIAL 70</div>`)[0];
+                popup_384b3920b6d14735a8dc662c556d9c20.setContent(html_5dd3a088f8264fd898fc23b107cf3ecb);
+            
+
+            circle_e2a4894968e445a3b2aa0cb8a9a45479.bindPopup(popup_384b3920b6d14735a8dc662c556d9c20)
+            ;
+
+            
+        
+    
+
+            var circle_1119b61600914b459aff8774f570d25b = L.circle(
+                [53.47125013, -113.6717408],
+                {
+  "bubblingMouseEvents": true,
+  "color": "green",
+  "dashArray": null,
+  "dashOffset": null,
+  "fill": true,
+  "fillColor": "darkgreen",
+  "fillOpacity": 0.2,
+  "fillRule": "evenodd",
+  "lineCap": "round",
+  "lineJoin": "round",
+  "opacity": 1.0,
+  "radius": 126.50000000000001,
+  "stroke": true,
+  "weight": 3
+}
+                )
+                .addTo(map_8d389da8cb114cba8997f0e131fa8aa2);
+            
+    
+            var popup_3d35b2d75b6f42a8ada7ce47aa2c930f = L.popup({maxWidth: '100%'
+            
+            });
+
+            
+                var html_ef0a2876eaab4e069965e9433a856a93 = $(`<div id="html_ef0a2876eaab4e069965e9433a856a93" style="width: 100.0%; height: 100.0%;">EDGEMONT 115</div>`)[0];
+                popup_3d35b2d75b6f42a8ada7ce47aa2c930f.setContent(html_ef0a2876eaab4e069965e9433a856a93);
+            
+
+            circle_1119b61600914b459aff8774f570d25b.bindPopup(popup_3d35b2d75b6f42a8ada7ce47aa2c930f)
+            ;
+
+            
+        
+    
+
+            var circle_e865582c5d3142489a9f80cb54909fd1 = L.circle(
+                [53.56947823, -113.7006312],
+                {
+  "bubblingMouseEvents": true,
+  "color": "green",
+  "dashArray": null,
+  "dashOffset": null,
+  "fill": true,
+  "fillColor": "darkgreen",
+  "fillOpacity": 0.2,
+  "fillRule": "evenodd",
+  "lineCap": "round",
+  "lineJoin": "round",
+  "opacity": 1.0,
+  "radius": 149.60000000000002,
+  "stroke": true,
+  "weight": 3
+}
+                )
+                .addTo(map_8d389da8cb114cba8997f0e131fa8aa2);
+            
+    
+            var popup_e5aec51dadbf4f91bad0da150c8c0515 = L.popup({maxWidth: '100%'
+            
+            });
+
+            
+                var html_2bbc1aef44504ba9a24365bb89f619cd = $(`<div id="html_2bbc1aef44504ba9a24365bb89f619cd" style="width: 100.0%; height: 100.0%;">WINTERBURN INDUSTRIAL AREA WEST 136</div>`)[0];
+                popup_e5aec51dadbf4f91bad0da150c8c0515.setContent(html_2bbc1aef44504ba9a24365bb89f619cd);
+            
+
+            circle_e865582c5d3142489a9f80cb54909fd1.bindPopup(popup_e5aec51dadbf4f91bad0da150c8c0515)
+            ;
+
+            
+        
+    
+
+            var circle_ee8d800fd4ed49d4b597bbc7d9906f9d = L.circle(
+                [53.59757869, -113.6545389],
+                {
+  "bubblingMouseEvents": true,
+  "color": "green",
+  "dashArray": null,
+  "dashOffset": null,
+  "fill": true,
+  "fillColor": "darkgreen",
+  "fillOpacity": 0.2,
+  "fillRule": "evenodd",
+  "lineCap": "round",
+  "lineJoin": "round",
+  "opacity": 1.0,
+  "radius": 196.9,
+  "stroke": true,
+  "weight": 3
+}
+                )
+                .addTo(map_8d389da8cb114cba8997f0e131fa8aa2);
+            
+    
+            var popup_9e0f982541fd4107bb622034368f35f4 = L.popup({maxWidth: '100%'
+            
+            });
+
+            
+                var html_0066b62ff7a940b39eb46bdee9f3d6e0 = $(`<div id="html_0066b62ff7a940b39eb46bdee9f3d6e0" style="width: 100.0%; height: 100.0%;">STARLING 179</div>`)[0];
+                popup_9e0f982541fd4107bb622034368f35f4.setContent(html_0066b62ff7a940b39eb46bdee9f3d6e0);
+            
+
+            circle_ee8d800fd4ed49d4b597bbc7d9906f9d.bindPopup(popup_9e0f982541fd4107bb622034368f35f4)
+            ;
+
+            
+        
+    
+
+            var circle_cc6784d84fb9488499be6b83482b544d = L.circle(
+                [53.47784688, -113.3551182],
+                {
+  "bubblingMouseEvents": true,
+  "color": "green",
+  "dashArray": null,
+  "dashOffset": null,
+  "fill": true,
+  "fillColor": "darkgreen",
+  "fillOpacity": 0.2,
+  "fillRule": "evenodd",
+  "lineCap": "round",
+  "lineJoin": "round",
+  "opacity": 1.0,
+  "radius": 339.90000000000003,
+  "stroke": true,
+  "weight": 3
+}
+                )
+                .addTo(map_8d389da8cb114cba8997f0e131fa8aa2);
+            
+    
+            var popup_b395a337f83a404b9865c604eb25ee9e = L.popup({maxWidth: '100%'
+            
+            });
+
+            
+                var html_a14b2d744f574298b4a7575ff7f5a582 = $(`<div id="html_a14b2d744f574298b4a7575ff7f5a582" style="width: 100.0%; height: 100.0%;">MAPLE 309</div>`)[0];
+                popup_b395a337f83a404b9865c604eb25ee9e.setContent(html_a14b2d744f574298b4a7575ff7f5a582);
+            
+
+            circle_cc6784d84fb9488499be6b83482b544d.bindPopup(popup_b395a337f83a404b9865c604eb25ee9e)
+            ;
+
+            
+        
+    
+
+            var circle_b694ce49b6754182837134a8f39b6f0b = L.circle(
+                [53.50925567, -113.574437],
+                {
+  "bubblingMouseEvents": true,
+  "color": "green",
+  "dashArray": null,
+  "dashOffset": null,
+  "fill": true,
+  "fillColor": "darkgreen",
+  "fillOpacity": 0.2,
+  "fillRule": "evenodd",
+  "lineCap": "round",
+  "lineJoin": "round",
+  "opacity": 1.0,
+  "radius": 421.3,
+  "stroke": true,
+  "weight": 3
+}
+                )
+                .addTo(map_8d389da8cb114cba8997f0e131fa8aa2);
+            
+    
+            var popup_7fa661a3f39d48d88230751d4a13f20b = L.popup({maxWidth: '100%'
+            
+            });
+
+            
+                var html_c2ee8fe3a59e40648143aad98dc1226b = $(`<div id="html_c2ee8fe3a59e40648143aad98dc1226b" style="width: 100.0%; height: 100.0%;">QUESNELL HEIGHTS 383</div>`)[0];
+                popup_7fa661a3f39d48d88230751d4a13f20b.setContent(html_c2ee8fe3a59e40648143aad98dc1226b);
+            
+
+            circle_b694ce49b6754182837134a8f39b6f0b.bindPopup(popup_7fa661a3f39d48d88230751d4a13f20b)
+            ;
+
+            
+        
+    
+
+            var circle_a7fa2a1ac2ee467c8f1278e31c0416b9 = L.circle(
+                [53.53134489, -113.4275359],
+                {
+  "bubblingMouseEvents": true,
+  "color": "crimson",
+  "dashArray": null,
+  "dashOffset": null,
+  "fill": true,
+  "fillColor": "red",
+  "fillOpacity": 0.2,
+  "fillRule": "evenodd",
+  "lineCap": "round",
+  "lineJoin": "round",
+  "opacity": 1.0,
+  "radius": 598.5,
+  "stroke": true,
+  "weight": 3
+}
+                )
+                .addTo(map_8d389da8cb114cba8997f0e131fa8aa2);
+            
+    
+            var popup_92ad1cef2e24434682d742f2a6d0c120 = L.popup({maxWidth: '100%'
+            
+            });
+
+            
+                var html_a225eb030e7a4d5c92cd725e26be8dd9 = $(`<div id="html_a225eb030e7a4d5c92cd725e26be8dd9" style="width: 100.0%; height: 100.0%;">OTTEWELL 5985</div>`)[0];
+                popup_92ad1cef2e24434682d742f2a6d0c120.setContent(html_a225eb030e7a4d5c92cd725e26be8dd9);
+            
+
+            circle_a7fa2a1ac2ee467c8f1278e31c0416b9.bindPopup(popup_92ad1cef2e24434682d742f2a6d0c120)
+            ;
+
+            
+        
+    
+
+            var circle_eaed7909469a422d81da5977920b0768 = L.circle(
+                [53.61063495, -113.5501312],
+                {
+  "bubblingMouseEvents": true,
+  "color": "crimson",
+  "dashArray": null,
+  "dashOffset": null,
+  "fill": true,
+  "fillColor": "red",
+  "fillOpacity": 0.2,
+  "fillRule": "evenodd",
+  "lineCap": "round",
+  "lineJoin": "round",
+  "opacity": 1.0,
+  "radius": 643.9000000000001,
+  "stroke": true,
+  "weight": 3
+}
+                )
+                .addTo(map_8d389da8cb114cba8997f0e131fa8aa2);
+            
+    
+            var popup_41d77494ad2942e294bc89b2efbd106d = L.popup({maxWidth: '100%'
+            
+            });
+
+            
+                var html_81c791acf62347d5be816953dc85b7d5 = $(`<div id="html_81c791acf62347d5be816953dc85b7d5" style="width: 100.0%; height: 100.0%;">CUMBERLAND 6439</div>`)[0];
+                popup_41d77494ad2942e294bc89b2efbd106d.setContent(html_81c791acf62347d5be816953dc85b7d5);
+            
+
+            circle_eaed7909469a422d81da5977920b0768.bindPopup(popup_41d77494ad2942e294bc89b2efbd106d)
+            ;
+
+            
+        
+    
+
+            var circle_36247dcc159b444ab8bdb75bba1d78ff = L.circle(
+                [53.54903594, -113.478967],
+                {
+  "bubblingMouseEvents": true,
+  "color": "crimson",
+  "dashArray": null,
+  "dashOffset": null,
+  "fill": true,
+  "fillColor": "red",
+  "fillOpacity": 0.2,
+  "fillRule": "evenodd",
+  "lineCap": "round",
+  "lineJoin": "round",
+  "opacity": 1.0,
+  "radius": 691.3000000000001,
+  "stroke": true,
+  "weight": 3
+}
+                )
+                .addTo(map_8d389da8cb114cba8997f0e131fa8aa2);
+            
+    
+            var popup_e1bd58c2f17d41b583dd2a394da3bfef = L.popup({maxWidth: '100%'
+            
+            });
+
+            
+                var html_7a7b855168954f0394427668eb3ef7d6 = $(`<div id="html_7a7b855168954f0394427668eb3ef7d6" style="width: 100.0%; height: 100.0%;">BOYLE STREET 6913</div>`)[0];
+                popup_e1bd58c2f17d41b583dd2a394da3bfef.setContent(html_7a7b855168954f0394427668eb3ef7d6);
+            
+
+            circle_36247dcc159b444ab8bdb75bba1d78ff.bindPopup(popup_e1bd58c2f17d41b583dd2a394da3bfef)
+            ;
+
+            
+        
+    
+
+            var circle_0083be3a0949407b8f28517394a19ccc = L.circle(
+                [53.55333581, -113.5201277],
+                {
+  "bubblingMouseEvents": true,
+  "color": "crimson",
+  "dashArray": null,
+  "dashOffset": null,
+  "fill": true,
+  "fillColor": "red",
+  "fillOpacity": 0.2,
+  "fillRule": "evenodd",
+  "lineCap": "round",
+  "lineJoin": "round",
+  "opacity": 1.0,
+  "radius": 722.5,
+  "stroke": true,
+  "weight": 3
+}
+                )
+                .addTo(map_8d389da8cb114cba8997f0e131fa8aa2);
+            
+    
+            var popup_51ed00f8449649fd8a3e2b6fe53364be = L.popup({maxWidth: '100%'
+            
+            });
+
+            
+                var html_4ca0f5fc728d407bba6addc086775d28 = $(`<div id="html_4ca0f5fc728d407bba6addc086775d28" style="width: 100.0%; height: 100.0%;">QUEEN MARY PARK 7225</div>`)[0];
+                popup_51ed00f8449649fd8a3e2b6fe53364be.setContent(html_4ca0f5fc728d407bba6addc086775d28);
+            
+
+            circle_0083be3a0949407b8f28517394a19ccc.bindPopup(popup_51ed00f8449649fd8a3e2b6fe53364be)
+            ;
+
+            
+        
+    
+
+            var circle_cf4fe61e6fe14d7e8ef12523f899f8bf = L.circle(
+                [53.5194394, -113.514911],
+                {
+  "bubblingMouseEvents": true,
+  "color": "crimson",
+  "dashArray": null,
+  "dashOffset": null,
+  "fill": true,
+  "fillColor": "red",
+  "fillOpacity": 0.2,
+  "fillRule": "evenodd",
+  "lineCap": "round",
+  "lineJoin": "round",
+  "opacity": 1.0,
+  "radius": 994.2,
+  "stroke": true,
+  "weight": 3
+}
+                )
+                .addTo(map_8d389da8cb114cba8997f0e131fa8aa2);
+            
+    
+            var popup_937feed4b9b44cfe90d1740147d33acc = L.popup({maxWidth: '100%'
+            
+            });
+
+            
+                var html_8e20f17623d2472b965a3bcd98436baa = $(`<div id="html_8e20f17623d2472b965a3bcd98436baa" style="width: 100.0%; height: 100.0%;">GARNEAU 9942</div>`)[0];
+                popup_937feed4b9b44cfe90d1740147d33acc.setContent(html_8e20f17623d2472b965a3bcd98436baa);
+            
+
+            circle_cf4fe61e6fe14d7e8ef12523f899f8bf.bindPopup(popup_937feed4b9b44cfe90d1740147d33acc)
+            ;
+
+            
+        
+    
+
+            var circle_9647939855b941a2bbaca28fcb6d59b0 = L.circle(
+                [53.41761616, -113.4601568],
+                {
+  "bubblingMouseEvents": true,
+  "color": "crimson",
+  "dashArray": null,
+  "dashOffset": null,
+  "fill": true,
+  "fillColor": "red",
+  "fillOpacity": 0.2,
+  "fillRule": "evenodd",
+  "lineCap": "round",
+  "lineJoin": "round",
+  "opacity": 1.0,
+  "radius": 1131.4,
+  "stroke": true,
+  "weight": 3
+}
+                )
+                .addTo(map_8d389da8cb114cba8997f0e131fa8aa2);
+            
+    
+            var popup_7939067e26d8415aabde7f1ed52aa7c4 = L.popup({maxWidth: '100%'
+            
+            });
+
+            
+                var html_05f56c36229e4e629dc9316ebf6b86aa = $(`<div id="html_05f56c36229e4e629dc9316ebf6b86aa" style="width: 100.0%; height: 100.0%;">SUMMERSIDE 11314</div>`)[0];
+                popup_7939067e26d8415aabde7f1ed52aa7c4.setContent(html_05f56c36229e4e629dc9316ebf6b86aa);
+            
+
+            circle_9647939855b941a2bbaca28fcb6d59b0.bindPopup(popup_7939067e26d8415aabde7f1ed52aa7c4)
+            ;
+
+            
+        
+</script>
