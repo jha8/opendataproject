@@ -3,7 +3,7 @@ import sqlite3
 import pandas as pd
 import folium
 
-conn = sqlite3.connect('./a4.db')
+conn = sqlite3.connect('./a4_sampled.db')
 c = conn.cursor()
 
 strt_year = int(input("Enter start year (YYYY):"))
@@ -42,5 +42,11 @@ dummy = pd.read_sql_query(parent, conn)
 dummy = dummy.groupby("Neighbourhood_Name").head(1)
 list = ['Neighbourhood_Name', 'Crime_Type', 'ratio']
 dummy = pd.merge(result, dummy, on="Neighbourhood_Name")
-final=dummy[[col for col in list if col in dummy.columns]]
+semi_final=dummy[[col for col in list if col in dummy.columns]]
+
+coordinate_query = '''select * from coordinates'''
+coord = pd.read_sql_query(coordinate_query, conn)
+coord = pd.merge(semi_final, coord, on='Neighbourhood_Name')
+list = ['Neighbourhood_Name', 'Crime_Type', 'ratio', 'Latitude', 'Longitude']
+final=coord[[col for col in list if col in coord.columns]]
 print(final.to_string(index=False))
