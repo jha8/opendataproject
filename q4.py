@@ -3,7 +3,7 @@ import sqlite3
 import pandas as pd
 import folium
 
-conn = sqlite3.connect('./a4-sampled.db')
+conn = sqlite3.connect('./a4.db')
 c = conn.cursor()
 
 strt_year = int(input("Enter start year (YYYY):"))
@@ -25,34 +25,22 @@ crimes = pd.read_sql_query(sql_statement, conn)
 crimes = pd.merge(crimes, population, on = 'Neighbourhood_Name')
 crimes['ratio'] = crimes['total_incidents']/crimes['population_count']
 crimes = crimes.sort_values(['ratio'], ascending=[False])
+# print(crimes.to_string(index = False))
 
-result1 = crimes.iloc[0:number_nbhd, 1:]
-result2 = crimes.iloc[0:number_nbhd, 0]
-result = pd.concat([result1, result2], axis =1)
+listone = ['Neighbourhood_Name', 'ratio']
+result= crimes[[col for col in listone if col in crimes.columns]]
+result = result.iloc[:number_nbhd, :]
 
-#print(result.to_string(index = False))
-#print(result)
+
 
 parent = '''SELECT neighbourhood_name,crime_type, sum(incidents_count) as total_incidents  from crime_incidents
 where year between %d and %d
-group by neighbourhood_name, crime_type 
+group by neighbourhood_name, crime_type
 order by neighbourhood_name asc, total_incidents desc''' % (strt_year, end_year)
 
-p_test = pd.read_sql_query(parent,conn)
-dummy = p_test.groupby("Neighbourhood_Name").head(1)
-#print(dummy)
-conn.close()
-#print(result)
-test1 = pd.merge(result, dummy, on = 'Neighbourhood_Name')
-print(test1)
-'''
-select neighbourhood_name, crime_type, sum(incidents_count) as total
-from crime_incidents
-where crime_type in (select crime_type from crime_incidents
-group by crime_type
-having max(incidents_count))
-and neighbourhood_name = 'ALLENDALE'
-group by neighbourhood_name, crime_type
-limit 25;
-'''
-#hell0s
+dummy = pd.read_sql_query(parent, conn)
+dummy = dummy.groupby("Neighbourhood_Name").head(1)
+list = ['Neighbourhood_Name', 'Crime_Type', 'ratio']
+dummy = pd.merge(result, dummy, on="Neighbourhood_Name")
+final=dummy[[col for col in list if col in dummy.columns]]
+print(final.to_string(index=False))
