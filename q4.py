@@ -1,9 +1,9 @@
-
 import sqlite3
 import pandas as pd
 import folium
 
-conn = sqlite3.connect('./a4_sampled.db')
+conn = sqlite3.connect('./a4-sampled.db')
+m = folium.Map(location=[53.5444,-113.323], zoom_start=11)
 c = conn.cursor()
 
 strt_year = int(input("Enter start year (YYYY):"))
@@ -49,4 +49,14 @@ coord = pd.read_sql_query(coordinate_query, conn)
 coord = pd.merge(semi_final, coord, on='Neighbourhood_Name')
 list = ['Neighbourhood_Name', 'Crime_Type', 'ratio', 'Latitude', 'Longitude']
 final=coord[[col for col in list if col in coord.columns]]
-print(final.to_string(index=False))
+print(final)
+for row in final.head().itertuples():
+    folium.Circle(
+        location = [row.Latitude, row.Longitude],
+        popup = "{} <br> {} <br> {}".format(row.Neighbourhood_Name, row.Crime_Type, row.ratio),
+        radius = (1500*(row.ratio)),
+        color = 'crimson',
+        fill = True,
+        fill_color = 'crimson'
+    ).add_to(m)
+m.save('q4.html')

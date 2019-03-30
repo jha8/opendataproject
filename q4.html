@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<head>    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <script>L_PREFER_CANVAS=false; L_NO_TOUCH=false; L_DISABLE_3D=false;</script>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.4.0/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.4.0/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://rawcdn.githack.com/python-visualization/folium/master/folium/templates/leaflet.awesome.rotate.css"/>
+    <style>html, body {width: 100%;height: 100%;margin: 0;padding: 0;}</style>
+    <style>#map {position:absolute;top:0;bottom:0;right:0;left:0;}</style>
+    
+    <meta name="viewport" content="width=device-width,
+        initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <style>#map_d02c803e357241c6a0ea340e76fda367 {
+        position: relative;
+        width: 100.0%;
+        height: 100.0%;
+        left: 0.0%;
+        top: 0.0%;
+        }
+    </style>
+</head>
+<body>    
+    
+    <div class="folium-map" id="map_d02c803e357241c6a0ea340e76fda367" ></div>
+</body>
+<script>    
+    
+    
+        var bounds = null;
+    
+
+    var map_d02c803e357241c6a0ea340e76fda367 = L.map(
+        'map_d02c803e357241c6a0ea340e76fda367', {
+        center: [53.5444, -113.323],
+        zoom: 11,
+        maxBounds: bounds,
+        layers: [],
+        worldCopyJump: false,
+        crs: L.CRS.EPSG3857,
+        zoomControl: true,
+        });
+
+
+    
+    var tile_layer_d9bf08b1fd0f403d909a11e8bd54339c = L.tileLayer(
+        'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
+        {
+        "attribution": null,
+        "detectRetina": false,
+        "maxNativeZoom": 18,
+        "maxZoom": 18,
+        "minZoom": 0,
+        "noWrap": false,
+        "opacity": 1,
+        "subdomains": "abc",
+        "tms": false
+}).addTo(map_d02c803e357241c6a0ea340e76fda367);
+    
+
+            var circle_36972f1ddd3a475cb0c3a2ca90967a3a = L.circle(
+                [53.50807597, -113.4161185],
+                {
+  "bubblingMouseEvents": true,
+  "color": "crimson",
+  "dashArray": null,
+  "dashOffset": null,
+  "fill": true,
+  "fillColor": "crimson",
+  "fillOpacity": 0.2,
+  "fillRule": "evenodd",
+  "lineCap": "round",
+  "lineJoin": "round",
+  "opacity": 1.0,
+  "radius": 792.8571428571429,
+  "stroke": true,
+  "weight": 3
+}
+                )
+                .addTo(map_d02c803e357241c6a0ea340e76fda367);
+            
+    
+            var popup_32a2c8062b634adea2aaf042133ceda1 = L.popup({maxWidth: '100%'
+            
+            });
+
+            
+                var html_8609c28f2d00414fa4b844125ae0f586 = $(`<div id="html_8609c28f2d00414fa4b844125ae0f586" style="width: 100.0%; height: 100.0%;">WEIR INDUSTRIAL <br> Theft From Vehicle <br> 0.5285714285714286</div>`)[0];
+                popup_32a2c8062b634adea2aaf042133ceda1.setContent(html_8609c28f2d00414fa4b844125ae0f586);
+            
+
+            circle_36972f1ddd3a475cb0c3a2ca90967a3a.bindPopup(popup_32a2c8062b634adea2aaf042133ceda1)
+            ;
+
+            
+        
+    
+
+            var circle_38c0f9a5926348548aa4a2560ee75ebe = L.circle(
+                [53.56947823, -113.7006312],
+                {
+  "bubblingMouseEvents": true,
+  "color": "crimson",
+  "dashArray": null,
+  "dashOffset": null,
+  "fill": true,
+  "fillColor": "crimson",
+  "fillOpacity": 0.2,
+  "fillRule": "evenodd",
+  "lineCap": "round",
+  "lineJoin": "round",
+  "opacity": 1.0,
+  "radius": 485.29411764705884,
+  "stroke": true,
+  "weight": 3
+}
+                )
+                .addTo(map_d02c803e357241c6a0ea340e76fda367);
+            
+    
+            var popup_e4fd77bc1d0b4c2db4bc8cac16a2eb4c = L.popup({maxWidth: '100%'
+            
+            });
+
+            
+                var html_619ac7b52f7e43d6838323ed98fba156 = $(`<div id="html_619ac7b52f7e43d6838323ed98fba156" style="width: 100.0%; height: 100.0%;">WINTERBURN INDUSTRIAL AREA WEST <br> Break and Enter <br> 0.3235294117647059</div>`)[0];
+                popup_e4fd77bc1d0b4c2db4bc8cac16a2eb4c.setContent(html_619ac7b52f7e43d6838323ed98fba156);
+            
+
+            circle_38c0f9a5926348548aa4a2560ee75ebe.bindPopup(popup_e4fd77bc1d0b4c2db4bc8cac16a2eb4c)
+            ;
+
+            
+        
+    
+
+            var circle_adb12bc6a6a04396941d52b4f760ce99 = L.circle(
+                [53.60065017, -113.5535508],
+                {
+  "bubblingMouseEvents": true,
+  "color": "crimson",
+  "dashArray": null,
+  "dashOffset": null,
+  "fill": true,
+  "fillColor": "crimson",
+  "fillOpacity": 0.2,
+  "fillRule": "evenodd",
+  "lineCap": "round",
+  "lineJoin": "round",
+  "opacity": 1.0,
+  "radius": 94.09594095940959,
+  "stroke": true,
+  "weight": 3
+}
+                )
+                .addTo(map_d02c803e357241c6a0ea340e76fda367);
+            
+    
+            var popup_774e1f3d73b24a668671d7d5b8f845db = L.popup({maxWidth: '100%'
+            
+            });
+
+            
+                var html_6fec3183636244ac9e6685e5c022933c = $(`<div id="html_6fec3183636244ac9e6685e5c022933c" style="width: 100.0%; height: 100.0%;">PEMBINA <br> Break and Enter <br> 0.06273062730627306</div>`)[0];
+                popup_774e1f3d73b24a668671d7d5b8f845db.setContent(html_6fec3183636244ac9e6685e5c022933c);
+            
+
+            circle_adb12bc6a6a04396941d52b4f760ce99.bindPopup(popup_774e1f3d73b24a668671d7d5b8f845db)
+            ;
+
+            
+        
+</script>
