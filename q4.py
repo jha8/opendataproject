@@ -3,7 +3,7 @@ import sqlite3
 import pandas as pd
 import folium
 
-conn = sqlite3.connect('./a4.db')
+conn = sqlite3.connect('./a4-sampled.db')
 c = conn.cursor()
 
 strt_year = int(input("Enter start year (YYYY):"))
@@ -29,12 +29,30 @@ crimes = crimes.sort_values(['ratio'], ascending=[False])
 result1 = crimes.iloc[0:number_nbhd, 1:]
 result2 = crimes.iloc[0:number_nbhd, 0]
 result = pd.concat([result1, result2], axis =1)
-print(result.to_string(index = False))
 
-////////////////////////////////////
+#print(result.to_string(index = False))
+#print(result)
 
 parent = '''SELECT neighbourhood_name,crime_type, sum(incidents_count) as total_incidents  from crime_incidents
 where year between %d and %d
 group by neighbourhood_name, crime_type 
 order by neighbourhood_name asc, total_incidents desc''' % (strt_year, end_year)
-///////////////////////////////
+
+p_test = pd.read_sql_query(parent,conn)
+dummy = p_test.groupby("Neighbourhood_Name").head(1)
+#print(dummy)
+conn.close()
+#print(result)
+test1 = pd.merge(result, dummy, on = 'Neighbourhood_Name')
+print(test1)
+'''
+select neighbourhood_name, crime_type, sum(incidents_count) as total
+from crime_incidents
+where crime_type in (select crime_type from crime_incidents
+group by crime_type
+having max(incidents_count))
+and neighbourhood_name = 'ALLENDALE'
+group by neighbourhood_name, crime_type
+limit 25;
+'''
+#hell0s
