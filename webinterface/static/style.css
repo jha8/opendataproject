@@ -63,7 +63,7 @@ a
     color: black;
     font-family: verdana;
     text-decoration: none;
-    transition: color 1s;
+    transition: all 1s;
     text-transform: capitalize;
     line-height: 25px;
     font-size:14px;
@@ -73,6 +73,7 @@ a
 a:hover
 {
     color: rgba(194, 84, 27, 0.6);
+    text-decoration: underline;
 }
 
 a:visited

@@ -1,6 +1,6 @@
 from flask import Flask, request, render_template
 import sqlite3
-import matplotlib
+import matplotlib, os
 matplotlib.use('agg')
 import matplotlib.pyplot as plt
 import pandas as pd
@@ -52,41 +52,46 @@ def query4():
 
 @app.route('/query1', methods=['GET', 'POST'])
 def q1():
-    try:
-        if request.method == 'POST':
-            conn = sqlite3.connect(dbname)
-            c = conn.cursor()
-            strt_year = int(request.form["start_year"])
-            end_year = int(request.form["end_year"])
-            crime_type = str(request.form["type_crime"])
 
-            q1 = '''
-                SELECT Month, Crime_Type, count(Incidents_Count) as I_C
-                From crime_incidents 
-                WHERE Crime_Type = '{}' and Year >= {} and Year <= {} 
-                group by Month
-            '''.format(crime_type,strt_year,end_year)
-            df = pd.read_sql_query(q1, conn)
-            found = df['Month']
-            arr = []
+    if request.method == 'POST':
+        conn = sqlite3.connect(dbname)
+        c = conn.cursor()
+        strt_year = int(request.form["start_year"])
+        end_year = int(request.form["end_year"])
+        crime_type = str(request.form["type_crime"])
 
-            for i in range(1, 13):
-                if not (found==i).any():
-                    arr.append(i)
-                else:
-                    i=i+1
+        q1 = '''
+            SELECT Month, Crime_Type, count(Incidents_Count) as I_C
+            From crime_incidents 
+            WHERE Crime_Type = '{}' and Year >= {} and Year <= {} 
+            group by Month
+        '''.format(crime_type,strt_year,end_year)
+        df = pd.read_sql_query(q1, conn)
+        found = df['Month']
+        arr = []
 
-            for k in arr:
-                df.loc[len(df)] = [k, 'Homicide', 0]
+        for i in range(1, 13):
+            if not (found==i).any():
+                arr.append(i)
+            else:
+                i=i+1
 
-            df = df.sort_values(by='Month')
-            plot = df.plot.bar(x="Month")
-            plt.plot()
-            plt.savefig('static/plot.png')
-            conn.close()
-            return render_template('plot.html')
-    except:
-        return render_template('plot.html')
+        for k in arr:
+            df.loc[len(df)] = [k, 'Homicide', 0]
+
+        df = df.sort_values(by='Month')
+        plot = df.plot.bar(x="Month")
+        plt.plot()
+        i = 1
+
+        while os.path.exists("static/q1-{}.png".format(i)):
+            i += 1
+
+        plt.savefig('static/q1-{}.png'.format(i))
+        filename = 'static/q1-{}.png'.format(i)
+        conn.close()
+        return render_template('plot.html', val=filename)
+
 
 
 @app.route('/query2', methods = ['GET', 'POST'])
@@ -125,9 +130,18 @@ def q2():
                 fill=True,
                 fill_color='red',
             ).add_to(m)
-        m.save('q2.html')
+        i = 1
+        while os.path.exists("templates/q2-{}.html".format(i)):
+            i += 1
+
+        m.save('templates/q2-{}.html'.format(i))
         conn.close()
-        return render_template('q2.html')
+        return render_template('q2-{}.html'.format(i))
+
+
+
+
+
 
 @app.route('/query3', methods = ['GET', 'POST'])
 def q3():
@@ -164,9 +178,13 @@ def q3():
                 fill=True,
                 fill_color='crimson'
             ).add_to(map)
-        map.save(outfile='q3.html')
+        i = 1
+        while os.path.exists("templates/q3-{}.html".format(i)):
+            i += 1
+
+        map.save('templates/q3-{}.html'.format(i))
         conn.close()
-        return render_template('q3.html')
+        return render_template('q3-{}.html'.format(i))
 
 
 @app.route('/query4', methods = ['GET', 'POST'])
@@ -229,8 +247,12 @@ def q4():
                 fill=True,
                 fill_color='crimson'
             ).add_to(m)
-        m.save('q4.html')
+        i = 1
+        while os.path.exists("templates/q4-{}.html".format(i)):
+            i += 1
+
+        m.save('templates/q4-{}.html'.format(i))
         conn.close()
-        return render_template('q4.html')
+        return render_template('q4-{}.html'.format(i))
 
 startup()
