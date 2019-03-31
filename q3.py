@@ -37,5 +37,5 @@ for row in result.head().itertuples():
         fill = True,
         fill_color = 'crimson'
     ).add_to(map)
-
 map.save(outfile='q3.html')
+conn.close()

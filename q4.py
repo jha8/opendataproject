@@ -3,9 +3,9 @@ import pandas as pd
 import folium
 
 conn = sqlite3.connect('./a4-sampled.db')
-m = folium.Map(location=[53.5444,-113.323], zoom_start=11)
 c = conn.cursor()
 
+m = folium.Map(location=[53.5444,-113.323], zoom_start=11)
 strt_year = int(input("Enter start year (YYYY):"))
 end_year = int(input("Enter end_year (YYYY):"))
 number_nbhd = int(input("Enter number of neighbourhoods:"))
@@ -61,3 +61,4 @@ for row in final.head().itertuples():
         fill_color = 'crimson'
     ).add_to(m)
 m.save('q4.html')
+conn.close()
