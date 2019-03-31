@@ -9,14 +9,38 @@
 	width:100%;
 	height: 720px;
 	float:left;
-	background-size:cover;
-	background-image: url('7.jpg');
+	background-repeat: no-repeat;
+	background-size:contain;
+	background: url('9.jpg')
 }
 
+input[type=text]
+{
+    height:50px;
+    width: 100%;
+    border: none;
+
+    padding: 15px 22px;
+    box-sizing: border-box;
+}
+input[type=submit]
+{
+	height:50px;
+    width: 100%;
+    border: none;
+
+	background-color: rgba(194, 84, 27, 1.00);
+}
+input:focus
+{
+	border-bottom: 1.4px dotted blue;
+    outline: none;
+
+}
 .formclass
 {
 	height: inherit;
-	width:25%;
-	margin-left:75%;
+	width: 30%;
+	margin-left:60%;
 	background-color: rgba(24, 24, 66, 0.8);
 	}
