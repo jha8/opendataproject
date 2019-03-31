@@ -64,11 +64,45 @@ def main_query(database_name):
 def q1(database_name):
     conn = sqlite3.connect(database_name)
     c = conn.cursor()
+    #Get user input.
+    strt_year = int(input("Enter start year (YYYY):"))
+    end_year = int(input("Enter end_year (YYYY):"))
+    crime_type = input("Enter a crime type:")
+    #For each month, get the crime counts of the entered crime type
+    #within the year range.
+    q1 = '''
+        SELECT Month, Crime_Type, count(Incidents_Count) as I_C
+        From crime_incidents 
+        WHERE Crime_Type = '{}' and Year >= {} and Year <= {} 
+        group by Month
+    '''.format(crime_type,strt_year,end_year)
+    df = pd.read_sql_query(q1, conn)
+    found = df['Month']
+    arr = []
 
+    #Create dataframe in order to plot barplot
+    for i in range(1, 13):
+        if not (found==i).any():
+            arr.append(i)
+        else:
+            i=i+1
+    for k in arr:
+        df.loc[len(df)] = [k, 'Homicide', 0]
+    df = df.sort_values(by='Month')
+    print(df.to_string(index=False))
+
+    #Increment counter to save file
     global q1_count
     q1_count += 1
-    sav_html_str = 'Q1-{}.png'.format(q1_count)
-    m.save(sav_html_str)
+    sav_html_str = './Q1-{}.png'.format(q1_count)
+
+    #Plot the bar graph and save the figure
+    plot = df.plot.bar(x="Month")
+    plt.plot()
+    plt.savefig(sav_html_str)
+    plt.show()
+    plt.close()
+
     conn.close()
     main_query(database_name)
 # ================================================================================

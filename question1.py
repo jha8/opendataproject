@@ -16,14 +16,26 @@ end_year = int(input("Enter end_year (YYYY):"))
 crime_type = input("Enter a crime type:")
 
 q1 = '''
-    SELECT Month, Crime_Type, SUM(Incidents_Count)
+    SELECT Month, Crime_Type, count(Incidents_Count) as I_C
     From crime_incidents 
     WHERE Crime_Type = '{}' and Year >= {} and Year <= {} 
-    GROUP BY Month
+    group by Month
 '''.format(crime_type,strt_year,end_year)
 df = pd.read_sql_query(q1, conn)
+found = df['Month']
+arr = []
 
-print(df)
+for i in range(1, 13):
+    if not (found==i).any():
+        arr.append(i)
+    else:
+        i=i+1
+
+for k in arr:
+    df.loc[len(df)] = [k, 'Homicide', 0]
+
+df = df.sort_values(by='Month')
+print(df.to_string(index=False))
 
 plot = df.plot.bar(x="Month")
 plt.plot()
