@@ -1,5 +1,8 @@
 from flask import Flask, request, render_template
 import sqlite3
+import matplotlib
+matplotlib.use('agg')
+import matplotlib.pyplot as plt
 import pandas as pd
 import folium
 
@@ -14,7 +17,7 @@ def startup():
         global dbname
         dbname = database_name
         if __name__ == '__main__':
-            app.run(debug=True)
+            app.run(debug=False)
 
     except sqlite3.OperationalError:
         #If database DNE print out error
@@ -47,10 +50,43 @@ def query4():
 
 
 
+@app.route('/query1', methods=['GET', 'POST'])
+def q1():
+    try:
+        if request.method == 'POST':
+            conn = sqlite3.connect(dbname)
+            c = conn.cursor()
+            strt_year = int(request.form["start_year"])
+            end_year = int(request.form["end_year"])
+            crime_type = str(request.form["type_crime"])
 
+            q1 = '''
+                SELECT Month, Crime_Type, count(Incidents_Count) as I_C
+                From crime_incidents 
+                WHERE Crime_Type = '{}' and Year >= {} and Year <= {} 
+                group by Month
+            '''.format(crime_type,strt_year,end_year)
+            df = pd.read_sql_query(q1, conn)
+            found = df['Month']
+            arr = []
 
+            for i in range(1, 13):
+                if not (found==i).any():
+                    arr.append(i)
+                else:
+                    i=i+1
 
+            for k in arr:
+                df.loc[len(df)] = [k, 'Homicide', 0]
 
+            df = df.sort_values(by='Month')
+            plot = df.plot.bar(x="Month")
+            plt.plot()
+            plt.savefig('static/plot.png')
+            conn.close()
+            return render_template('plot.html')
+    except:
+        return render_template('plot.html')
 
 
 @app.route('/query2', methods = ['GET', 'POST'])
