@@ -6,6 +6,10 @@ import folium
 # ================================================================================
 # // User inputs and error handling
 # ================================================================================
+q1 = 0
+q2 = 0
+q3 = 0
+q4 = 0
 def enter_db_name():
     db_name = input("Enter the name of the database you want to access (without .db): \t")
     return db_name
@@ -55,7 +59,10 @@ def main_query(database_name):
 def q1(database_name):
     conn = sqlite3.connect(database_name)
     c = conn.cursor()
+    q1 += 1
     
+    sav_html_str = 'Q1-{}.png'.format(q1)
+    m.save(sav_html_str)
     conn.close()
     main_query(database_name)
 # ================================================================================
@@ -99,7 +106,9 @@ def q2(database_name):
             fill = True,
             fill_color='red',
         ).add_to(m)
-    m.save('q2.html')
+    q2 += 1
+    sav_html_str = 'Q2-{}.html'.format(q2)
+    m.save(sav_html_str)
 
     conn.close()
     main_query(database_name)
@@ -145,7 +154,9 @@ def q3(database_name):
             fill = True,
             fill_color = 'crimson'
         ).add_to(map)
-    map.save(outfile='q3.html')
+    q3 += 1
+    sav_html_str = 'Q3-{}.html'.format(q3)
+    map.save(outfile=sav_html_str)
 
     conn.close()
     main_query(database_name)
@@ -214,7 +225,10 @@ def q4(database_name):
             fill = True,
             fill_color = 'crimson'
         ).add_to(m)
-    m.save('q4.html')
+
+    q4 += 1
+    sav_html_str = 'Q4-{}.html'.format(q4)
+    m.save(sav_html_str)
 
     conn.close()
     main_query(database_name)

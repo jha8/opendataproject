@@ -39,6 +39,5 @@ def q2():
     m.save('q2.html')
     
 
-    #https://www.programcreek.com/python/example/101334/pandas.read_sql_query
     conn.close()
 q2()
