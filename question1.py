@@ -16,7 +16,7 @@ end_year = int(input("Enter end_year (YYYY):"))
 crime_type = input("Enter a crime type:")
 
 q1 = '''
-    SELECT Month, Crime_Type, COUNT(Incidents_Count)
+    SELECT Month, Crime_Type, SUM(Incidents_Count)
     From crime_incidents 
     WHERE Crime_Type = '{}' and Year >= {} and Year <= {} 
     GROUP BY Month

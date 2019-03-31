@@ -10,15 +10,17 @@ strt_year = int(input("Enter start year (YYYY):"))
 end_year = int(input("Enter end_year (YYYY):"))
 number_nbhd = int(input("Enter number of neighbourhoods:"))
 
-start_statement = '''select neighbourhood_name, (canadian_citizen+ non_canadian_citizen+ no_response) as population_count from population 
+start_statement = '''select neighbourhood_name, (canadian_citizen+ non_canadian_citizen+ no_response) as population_count 
+from population 
 where population_count!=0
 group by neighbourhood_name;'''
 population = pd.read_sql_query(start_statement,conn)
 
-sql_statement = '''SELECT neighbourhood_name, sum(incidents_count) as total_incidents  from crime_incidents
+sql_statement = '''SELECT neighbourhood_name, sum(incidents_count) as total_incidents  
+from crime_incidents
 where year between %d and %d
 group by neighbourhood_name
-order by incidents_count''' % (strt_year, end_year)
+order by total_incidents''' % (strt_year, end_year)
 
 crimes = pd.read_sql_query(sql_statement, conn)
 
@@ -30,7 +32,6 @@ crimes = crimes.sort_values(['ratio'], ascending=[False])
 listone = ['Neighbourhood_Name', 'ratio']
 result= crimes[[col for col in listone if col in crimes.columns]]
 result = result.iloc[:number_nbhd, :]
-
 
 
 parent = '''SELECT neighbourhood_name,crime_type, sum(incidents_count) as total_incidents  from crime_incidents

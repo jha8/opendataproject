@@ -10,20 +10,21 @@ end_year = int(input("Enter end_year (YYYY):"))
 crime_type = str(input("Enter crime type:"))
 number_nbhd = int(input("Enter number of neighbourhoods:"))
 
-sql_statement = '''SELECT neighbourhood_name, sum(incidents_count) as total_incidents  from crime_incidents
+sql_statement = '''SELECT neighbourhood_name, sum(incidents_count) as total_incidents  
+from crime_incidents
 where crime_type = '%s'
 and year between %d and %d
 group by neighbourhood_name
-order by incidents_count desc limit %d''' % (crime_type, strt_year, end_year, number_nbhd)
+order by total_incidents desc''' % (crime_type, strt_year, end_year)
 
 
-rows = pd.read_sql_query(sql_statement, conn)
-
+test1 = pd.read_sql_query(sql_statement, conn)
+rows = test1.nlargest(number_nbhd,'total_incidents',keep='all')
 new = rows.iloc[:, 0]
 
 universe = pd.read_sql_query('''Select * from coordinates''', conn)
 result = pd.merge(rows, universe, on = 'Neighbourhood_Name')
-#
+print(result)
 map =folium.Map(location=[result['Latitude'].mean(),result['Longitude'].mean()], zoom_start=14)
 
 
