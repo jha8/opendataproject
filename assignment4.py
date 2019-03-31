@@ -4,12 +4,15 @@ import matplotlib.pyplot as plt
 import folium
 
 # ================================================================================
-# // User inputs and error handling
+# // Global Variables
 # ================================================================================
 q1 = 0
 q2 = 0
 q3 = 0
 q4 = 0
+# ================================================================================
+# // User inputs and error handling
+# ================================================================================
 def enter_db_name():
     db_name = input("Enter the name of the database you want to access (without .db): \t")
     return db_name
@@ -26,7 +29,6 @@ def main():
 # ================================================================================
 # // Main function
 # ================================================================================
-
 def main_query(database_name):
     while True:
         print("""
@@ -55,24 +57,30 @@ def main_query(database_name):
             print('Invalid Input. Try again')
 # ================================================================================
 # // Q1
+#   Prompt user for range of years and crime type.
+#   The month wise total count of the number of the crime incidents occured in the
+#   given range is displayed on a bar plot.
 # ================================================================================
 def q1(database_name):
     conn = sqlite3.connect(database_name)
     c = conn.cursor()
     q1 += 1
-    
+
     sav_html_str = 'Q1-{}.png'.format(q1)
     m.save(sav_html_str)
     conn.close()
     main_query(database_name)
 # ================================================================================
 # // Q2
+#   Prompt user for an integer N
+#   Show the N-most populous and N-least populous neighbourhoods w/ population count
 # ================================================================================
 def q2(database_name):
     conn = sqlite3.connect(database_name)
     c = conn.cursor()
-
+    #Get user input
     n_areas = int(input("Enter number of locations:"))
+    #Create base for map
     m = folium.Map(location=[53.5444,-113.323], zoom_start=11)
     sql_top_bot = '''
             SELECT p.Neighbourhood_Name, c.Latitude, c.Longitude, (CANADIAN_CITIZEN+NON_CANADIAN_CITIZEN+NO_RESPONSE) as Total
@@ -80,6 +88,7 @@ def q2(database_name):
             WHERE p.Neighbourhood_name = c.Neighbourhood_name and total > 0 and c.Latitude != 0 and c.Longitude != 0
             ORDER BY Total
         '''
+    #Extra the top N populous and bottom N least populous
     data = pd.read_sql_query(sql_top_bot,conn)
     top_n = data.nlargest(n_areas,'Total',keep='all')
     bot_n = data.nsmallest(n_areas,'Total',keep='all')
@@ -88,6 +97,7 @@ def q2(database_name):
     print(top_n)
     print(bot_n)
     ############
+    #Iterate through least populous and plot on map
     for i in range(n_areas):
         folium.Circle(
             location=[bot_n.iloc[i]['Latitude'], bot_n.iloc[i]['Longitude']],
@@ -97,6 +107,7 @@ def q2(database_name):
             fill = True,
             fill_color='blue',
         ).add_to(m)
+    #Iterate through most populous and plot on map
     for i in range(n_areas):
         folium.Circle(
             location=[top_n.iloc[i]['Latitude'], top_n.iloc[i]['Longitude']],
@@ -106,24 +117,28 @@ def q2(database_name):
             fill = True,
             fill_color='red',
         ).add_to(m)
+    #Increment counter and save file to disk
     q2 += 1
     sav_html_str = 'Q2-{}.html'.format(q2)
     m.save(sav_html_str)
-
     conn.close()
     main_query(database_name)
 # ================================================================================
 # // Q3
+#   Prompt to enter range of years, crime type and an integer N
+#   Show the map with Top-N neighbourhoods and crime count w/ respect to given
+#   crime type and year range.
 # ================================================================================
 def q3(database_name):
     conn = sqlite3.connect(database_name)
     c = conn.cursor()
-
+    #Get user input
     strt_year = int(input("Enter start year (YYYY):"))
     end_year = int(input("Enter end_year (YYYY):"))
     crime_type = str(input("Enter crime type:"))
     number_nbhd = int(input("Enter number of neighbourhoods:"))
 
+    #Query to select crime counts of the given crime type in the year range.
     sql_statement = '''SELECT neighbourhood_name, sum(incidents_count) as total_incidents  
     from crime_incidents
     where crime_type = '%s'
@@ -131,20 +146,22 @@ def q3(database_name):
     group by neighbourhood_name
     order by total_incidents desc''' % (crime_type, strt_year, end_year)
 
-
+    #Extract the top n neighbourhoods with the highest crime counts of the given crime type.
     test1 = pd.read_sql_query(sql_statement, conn)
     rows = test1.nlargest(number_nbhd,'total_incidents',keep='all')
     new = rows.iloc[:, 0]
 
+    #Join table, to get coordinates to top n neighbourhoods
     universe = pd.read_sql_query('''Select * from coordinates''', conn)
     result = pd.merge(rows, universe, on = 'Neighbourhood_Name')
+
     ############
     #IF NEED TO TEST PRINT
     print(result)
     ############
+
+    #Plot top n neighbourhoods on map
     map =folium.Map(location=[result['Latitude'].mean(),result['Longitude'].mean()], zoom_start=14)
-
-
     for row in result.head().itertuples():
         folium.Circle(
             location = [row.Latitude, row.Longitude],
@@ -154,6 +171,8 @@ def q3(database_name):
             fill = True,
             fill_color = 'crimson'
         ).add_to(map)
+        
+    #Increment counter and save file to disk
     q3 += 1
     sav_html_str = 'Q3-{}.html'.format(q3)
     map.save(outfile=sav_html_str)
@@ -162,30 +181,35 @@ def q3(database_name):
     main_query(database_name)
 # ================================================================================
 # // Q4
+#   Prompt to enter range of years and an integer N.
+#   Show a map with Top-N neighbourhoods with highest crimes/population ratio
+#   as well as most frequent crime type in the neighbourhoods.
 # ================================================================================
 def q4(database_name):
     conn = sqlite3.connect(database_name)
     c = conn.cursor()
-
+    #Create base map
     m = folium.Map(location=[53.5444,-113.323], zoom_start=11)
+    #Gather user input
     strt_year = int(input("Enter start year (YYYY):"))
     end_year = int(input("Enter end_year (YYYY):"))
     number_nbhd = int(input("Enter number of neighbourhoods:"))
 
+    #Query to get population count
     start_statement = '''select neighbourhood_name, (canadian_citizen+ non_canadian_citizen+ no_response) as population_count 
     from population 
     where population_count!=0
     group by neighbourhood_name;'''
     population = pd.read_sql_query(start_statement,conn)
-
+    #Query to get total crime incidents
     sql_statement = '''SELECT neighbourhood_name, sum(incidents_count) as total_incidents  
     from crime_incidents
     where year between %d and %d
     group by neighbourhood_name
     order by total_incidents''' % (strt_year, end_year)
 
+    #Calculate the ratio crimes/population for each neighbourhood
     crimes = pd.read_sql_query(sql_statement, conn)
-
     crimes = pd.merge(crimes, population, on = 'Neighbourhood_Name')
     crimes['ratio'] = crimes['total_incidents']/crimes['population_count']
     crimes = crimes.sort_values(['ratio'], ascending=[False])
@@ -195,18 +219,20 @@ def q4(database_name):
     result= crimes[[col for col in listone if col in crimes.columns]]
     result = result.iloc[:number_nbhd, :]
 
-
+    #Get most frequent crime types in each neighbourhood
     parent = '''SELECT neighbourhood_name,crime_type, sum(incidents_count) as total_incidents  from crime_incidents
     where year between %d and %d
     group by neighbourhood_name, crime_type
     order by neighbourhood_name asc, total_incidents desc''' % (strt_year, end_year)
 
+    #Extract the most frequent crime type from each neighbourhood
     dummy = pd.read_sql_query(parent, conn)
     dummy = dummy.groupby("Neighbourhood_Name").head(1)
     list = ['Neighbourhood_Name', 'Crime_Type', 'ratio']
     dummy = pd.merge(result, dummy, on="Neighbourhood_Name")
     semi_final=dummy[[col for col in list if col in dummy.columns]]
 
+    #Perform a join to get coordinates for selected neighbourhoods.
     coordinate_query = '''select * from coordinates'''
     coord = pd.read_sql_query(coordinate_query, conn)
     coord = pd.merge(semi_final, coord, on='Neighbourhood_Name')
@@ -216,6 +242,7 @@ def q4(database_name):
     #IF NEED TO TEST PRINT
     print(final)
     ############
+    #Plot the neighbourhoods on map
     for row in final.head().itertuples():
         folium.Circle(
             location = [row.Latitude, row.Longitude],
@@ -225,7 +252,8 @@ def q4(database_name):
             fill = True,
             fill_color = 'crimson'
         ).add_to(m)
-
+    
+    #Increment counter and save file to disk
     q4 += 1
     sav_html_str = 'Q4-{}.html'.format(q4)
     m.save(sav_html_str)

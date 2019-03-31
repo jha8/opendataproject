@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 
 # ================================================================================
 # // Q1 
-#       Prompt user for range of years and crime type.
+#   Prompt user for range of years and crime type.
 #   The month wise total count of the number of the crime incidents occured in the
 #   given range is displayed on a bar plot.
 # ================================================================================
