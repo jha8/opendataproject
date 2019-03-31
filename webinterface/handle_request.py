@@ -29,6 +29,9 @@ app = Flask(__name__)
 def home():
     return render_template('index.html')
 
+@app.route('/query1')
+def query1():
+    return render_template('query1.html')
 
 @app.route('/query2')
 def query2():
@@ -94,10 +97,8 @@ def q2():
         conn.close()
         return render_template('q2.html')
 
-    #https://www.programcreek.com/python/example/101334/pandas.read_sql_query
-
 @app.route('/query3', methods = ['GET', 'POST'])
-def getting_data():
+def q3():
     if request.method == 'POST':
         strt_year = int(request.form["start_year"])
         end_year = int(request.form["end_year"])
@@ -117,7 +118,7 @@ def getting_data():
 
         universe = pd.read_sql_query('''Select * from coordinates''', conn)
         resulting = pd.merge(rows, universe, on='Neighbourhood_Name')
-        #
+        print(resulting.to_string(index=False))
         mapped = folium.Map(location=[resulting['Latitude'].mean(), resulting['Longitude'].mean()], zoom_start=14)
 
         for row in resulting.head().itertuples():
