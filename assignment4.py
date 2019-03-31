@@ -6,10 +6,10 @@ import folium
 # ================================================================================
 # // Global Variables
 # ================================================================================
-q1 = 0
-q2 = 0
-q3 = 0
-q4 = 0
+q1_count = 0
+q2_count = 0
+q3_count = 0
+q4_count = 0
 # ================================================================================
 # // User inputs and error handling
 # ================================================================================
@@ -64,9 +64,10 @@ def main_query(database_name):
 def q1(database_name):
     conn = sqlite3.connect(database_name)
     c = conn.cursor()
-    q1 += 1
 
-    sav_html_str = 'Q1-{}.png'.format(q1)
+    global q1_count
+    q1_count += 1
+    sav_html_str = 'Q1-{}.png'.format(q1_count)
     m.save(sav_html_str)
     conn.close()
     main_query(database_name)
@@ -118,8 +119,9 @@ def q2(database_name):
             fill_color='red',
         ).add_to(m)
     #Increment counter and save file to disk
-    q2 += 1
-    sav_html_str = 'Q2-{}.html'.format(q2)
+    global q2_count
+    q2_count += 1
+    sav_html_str = 'Q2-{}.html'.format(q2_count)
     m.save(sav_html_str)
     conn.close()
     main_query(database_name)
@@ -166,15 +168,16 @@ def q3(database_name):
         folium.Circle(
             location = [row.Latitude, row.Longitude],
             popup = "{} <br> {} ".format(row.Neighbourhood_Name, row.total_incidents),
-            radius = (30*(row.total_incidents//50)),
+            radius = (45*(row.total_incidents//50)),
             color = 'crimson',
             fill = True,
             fill_color = 'crimson'
         ).add_to(map)
         
     #Increment counter and save file to disk
-    q3 += 1
-    sav_html_str = 'Q3-{}.html'.format(q3)
+    global q3_count
+    q3_count += 1
+    sav_html_str = 'Q3-{}.html'.format(q3_count)
     map.save(outfile=sav_html_str)
 
     conn.close()
@@ -254,8 +257,9 @@ def q4(database_name):
         ).add_to(m)
     
     #Increment counter and save file to disk
-    q4 += 1
-    sav_html_str = 'Q4-{}.html'.format(q4)
+    global q4_count
+    q4_count += 1
+    sav_html_str = 'Q4-{}.html'.format(q4_count)
     m.save(sav_html_str)
 
     conn.close()

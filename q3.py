@@ -32,7 +32,7 @@ for row in result.head().itertuples():
     folium.Circle(
         location = [row.Latitude, row.Longitude],
         popup = "{} <br> {} ".format(row.Neighbourhood_Name, row.total_incidents),
-        radius = (30*(row.total_incidents//50)),
+        radius = (45*(row.total_incidents//50)),
         color = 'crimson',
         fill = True,
         fill_color = 'crimson'
