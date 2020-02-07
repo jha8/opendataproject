@@ -1,8 +1,3 @@
-# 291_assign4
-## Group Project for CMPUT 291 Assignment 4 (Open Data)
+# Open Data Assignment CMPUT 291
+## Group Project for CMPUT 291, Using Open Data from the City of Edmonton
 
-### Tasks
-#### Q1 Asma, Reviewer: Joe
-#### Q2 Joe, Reviewer: Deb
-#### Q3 Deb, Reviewer: Asma
-#### Q4 Everyone
