@@ -12,24 +12,20 @@ SQLite
 After launching the program, the user is prompted to select which function to view using the web interface.
 
 ### Function 1
-```
 User is prompted to enter a range of years and a crime type. The month wise total count of the number of crime incidents that occured in the given year range is displayed on a bar plot. After the executing the function, the program will loop back to main page.
-```
+
 ![](https://github.com/jha8/opendataproject/blob/master/images/Q1-2.png)
 ### Function 2
-```
 User is prompted to enter an integer N. The most/least populous neighbourhoods along with their population counts is shown on map. 
-```
+
 ![](https://github.com/jha8/opendataproject/blob/master/images/Q2-2.png)
 ### Function 3
-```
 User is prompted to enter a range of years, crime type, and number of neighbourhoods (integer). The top N neighbourhoods and their crime counts where the given crime occured most within the given range is shown on a map.
-```
+
 ![](https://github.com/jha8/opendataproject/blob/master/images/Q3-2.png)
 ### Function 4
-```
 User is prompted to enter a range of years and number of neighbourhoods (integer). The top-N neighbourhoods with the highest crimes to population ratio within the provided rage is shown on a map. The most frequent crime type in each of these neighbourhoods is also shown.
-```
+
 ![](https://github.com/jha8/opendataproject/blob/master/images/Q4-2.png)
 
 
