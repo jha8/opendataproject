@@ -1,6 +1,7 @@
 # Open Crime Data in Edmonton
-Group Project for CMPUT 291 using a GUI interface analyzing open data from the City of Edmonton (https://data.edmonton.ca)
 ![](https://github.com/jha8/opendataproject/blob/master/images/MainInterface.png)
+
+Group Project for CMPUT 291 using a GUI interface analyzing open data from the City of Edmonton (https://data.edmonton.ca)
 
 ## Getting Started
 Python 3
