@@ -11,7 +11,7 @@ All collaborators on this project have carefully discussed and divided areas by 
 ## Authors
 * **Joe Ha**           - [jha8](https://github.com/jha8)
 * **Debangana Ghosh**  - [orackle](https://github.com/orackle)
-* **Asma Omar**  - [orackle](https://github.com/orackle)
+* **Asma Omar**  - [soomyy](https://github.com/soomyy)
 
 ## License
 ```MIT License
