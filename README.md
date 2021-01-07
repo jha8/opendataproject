@@ -4,8 +4,17 @@
 ## Getting Started
 - Python 3
 - Pandas
+- Folium
 - Flask
 - SQLite
+
+## Running the Application
+```
+export FLASK_APP=hello.py
+flask run
+a4-sampled
+```
+
 
 ## User Guide
 After launching the program, the user is prompted to select which function to view using the web interface.
